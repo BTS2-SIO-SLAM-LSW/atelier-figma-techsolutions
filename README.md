@@ -13,25 +13,25 @@ Ce répertoire contient **TOUT** ce dont vous avez besoin pour réussir l'atelie
 - [ ] **Connexion internet** stable
 
 ### 📚 Documents à avoir sous la main
-- [ ] **[dossier_etudiant.md](dossier_etudiant.md)** - Votre guide principal (gardez-le ouvert !)
-- [ ] **[charte_graphique.md](charte_graphique.md)** - Couleurs et styles TechSolutions
-- [ ] **[exemples_tickets.md](exemples_tickets.md)** - Cas d'usage métier
-- [ ] **[patterns_interface.md](patterns_interface.md)** - Patterns essentiels mobile
+- [ ] **[dossier_etudiant.pdf](dossier_etudiant.pdf)** - Votre guide principal (gardez-le ouvert !)
+- [ ] **[charte_graphique.pdf](charte_graphique.pdf)** - Couleurs et styles TechSolutions
+- [ ] **[exemples_tickets.pdf](exemples_tickets.pdf)** - Cas d'usage métier
+- [ ] **[patterns_interface.pdf](patterns_interface.pdf)** - Patterns essentiels mobile
 
 ## 📋 Programme de l'atelier
 
 | ⏰ Temps | 🎯 Phase | 📖 Documents à utiliser | ✅ Validation |
 |---------|----------|-------------------------|----------------|
-| **30 min** | **Analyse UX** | [dossier_etudiant.md](dossier_etudiant.md) p.1-7 + [exemples_tickets.md](exemples_tickets.md) | [QCM Phase 1](qcm_intermediaires.md#phase-1) |
-| **90 min** | **Conception** | [charte_graphique.md](charte_graphique.md) + [patterns_interface.md](patterns_interface.md) | [QCM Phase 2](qcm_intermediaires.md#phase-2) |
-| **30 min** | **Présentation** | [grille_auto_evaluation.md](grille_auto_evaluation.md) | [QCM Phase 3](qcm_intermediaires.md#phase-3) |
-| **25 min** | **Documentation** | [dossier_etudiant.md](dossier_etudiant.md) template synthèse | [QCM Final](qcm_intermediaires.md#qcm-final) |
+| **30 min** | **Analyse UX** | [dossier_etudiant.pdf](dossier_etudiant.pdf) p.1-7 + [exemples_tickets.md](exemples_tickets.md) | [QCM Phase 1](qcm_intermediaires.md#phase-1) |
+| **90 min** | **Conception** | [charte_graphique.pdf](charte_graphique.pdf) + [patterns_interface.md](patterns_interface.md) | [QCM Phase 2](qcm_intermediaires.md#phase-2) |
+| **30 min** | **Présentation** | [grille_auto_evaluation.pdf](grille_auto_evaluation.pdf) | [QCM Phase 3](qcm_intermediaires.md#phase-3) |
+| **25 min** | **Documentation** | [dossier_etudiant.pdf](dossier_etudiant.pdf) template synthèse | [QCM Final](qcm_intermediaires.md#qcm-final) |
 
 ## 🎯 Phase 1 : Analyse UX (30 min)
 
 ### À faire :
-1. **Lisez les interviews** utilisateurs dans [dossier_etudiant.md](dossier_etudiant.md)
-2. **Étudiez les 3 exemples** dans [exemples_tickets.md](exemples_tickets.md)
+1. **Lisez les interviews** utilisateurs dans [dossier_etudiant.pdf](dossier_etudiant.pdf)
+2. **Étudiez les 3 exemples** dans [exemples_tickets.pdf](exemples_ticketspdf)
 3. **Créez des personas** avec les templates fournis
 4. **Identifiez cas d'utilisation** format "En tant que... je veux... pour..."
 5. **Priorisez** selon impact + fréquence
@@ -48,7 +48,7 @@ Ce répertoire contient **TOUT** ce dont vous avez besoin pour réussir l'atelie
 ## 🎨 Phase 2 : Conception (90 min)
 
 ### Étape 1 : Wireframes (25 min)
-- **Inspirez-vous** des [patterns_interface.md](patterns_interface.md)
+- **Inspirez-vous** des [patterns_interface.pdf](patterns_interface.pdf)
 - **Dessinez** 5 écrans principaux :
   1. Dashboard avec urgences
   2. Liste tickets filtrée  
@@ -57,7 +57,7 @@ Ce répertoire contient **TOUT** ce dont vous avez besoin pour réussir l'atelie
   5. Planning technicien
 
 ### Étape 2 : Design UI (45 min)
-- **Appliquez** la [charte_graphique.md](charte_graphique.md)
+- **Appliquez** la [charte_graphique.pdf](charte_graphique.pdf)
 - **Respectez** les couleurs priorités :
   - 🔴 P1 Critique : `#EF4444`
   - 🟠 P2 Haute : `#F59E0B`
@@ -81,7 +81,7 @@ Ce répertoire contient **TOUT** ce dont vous avez besoin pour réussir l'atelie
 - **Réponse aux personas** : Thomas, Sophie, Marie
 
 ### 📊 Auto-évaluation continue
-- Utilisez [grille_auto_evaluation.md](grille_auto_evaluation.md)
+- Utilisez [grille_auto_evaluation.md](grille_auto_evaluation.pdf)
 - **Notez-vous** sur 17 compétences
 - **Identifiez** vos axes d'amélioration
 
