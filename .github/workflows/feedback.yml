@@ -1,0 +1,47 @@
+name: Feedback personnalisé atelier
+
+on:
+  workflow_run:
+    workflows: ["GitHub Classroom Workflow"]
+    types:
+      - completed
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  personalized-feedback:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Generate personalized feedback
+      run: |
+        python .github/scripts/generate_feedback.py
+    
+    - name: Create feedback issue
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          // Lecture du feedback généré
+          const feedback = fs.readFileSync('generated_feedback.md', 'utf8');
+          
+          // Création d'une issue avec le feedback
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: '🎯 Feedback Atelier Figma TechSolutions',
+            body: feedback,
+            labels: ['feedback', 'atelier-figma']
+          });

@@ -1,0 +1,97 @@
+name: Autograding Tests
+env:
+  PYTHON_VERSION: 3.8
+
+on:
+  push:
+  repository_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest jsonschema requests
+
+    # TEST 1: Vérification structure soumission JSON
+    - name: Test 1 - Structure soumission étudiant
+      id: test-json-structure
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test-json-structure
+        setup-command: ''
+        command: python tests/test_submissions.py --test structure
+        timeout: 5
+        max-score: 20
+
+    # TEST 2: Validation contenu UX obligatoire
+    - name: Test 2 - Contenu UX requis
+      id: test-ux-content
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test-ux-content
+        setup-command: ''
+        command: python tests/test_submissions.py --test ux_content
+        timeout: 5
+        max-score: 30
+
+    # TEST 3: Validation liens Figma
+    - name: Test 3 - Liens Figma valides
+      id: test-figma-links
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test-figma-links
+        setup-command: ''
+        command: python tests/test_submissions.py --test figma_links
+        timeout: 10
+        max-score: 25
+
+    # TEST 4: Completeness des réponses QCM
+    - name: Test 4 - Réponses QCM complètes
+      id: test-qcm-completeness
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test-qcm-completeness
+        setup-command: ''
+        command: python tests/test_submissions.py --test qcm_answers
+        timeout: 5
+        max-score: 15
+
+    # TEST 5: Auto-évaluation remplie
+    - name: Test 5 - Auto-évaluation complète
+      id: test-self-evaluation
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test-self-evaluation
+        setup-command: ''
+        command: python tests/test_submissions.py --test self_evaluation
+        timeout: 5
+        max-score: 10
+
+    # Calcul du score final et rapport détaillé
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-JSON-STRUCTURE_RESULTS: "${{steps.test-json-structure.outputs.result}}"
+        TEST-UX-CONTENT_RESULTS: "${{steps.test-ux-content.outputs.result}}"
+        TEST-FIGMA-LINKS_RESULTS: "${{steps.test-figma-links.outputs.result}}"
+        TEST-QCM-COMPLETENESS_RESULTS: "${{steps.test-qcm-completeness.outputs.result}}"
+        TEST-SELF-EVALUATION_RESULTS: "${{steps.test-self-evaluation.outputs.result}}"
+      with:
+        runners: test-json-structure,test-ux-content,test-figma-links,test-qcm-completeness,test-self-evaluation

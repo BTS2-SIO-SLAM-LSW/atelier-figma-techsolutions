@@ -1,0 +1,401 @@
+{
+  "📝": "TEMPLATE DE SOUMISSION - Atelier Figma TechSolutions",
+  "📌": "Remplacez TOUTES les valeurs par vos données réelles",
+  "⚠️": "Conservez la structure JSON exacte pour l'évaluation automatique",
+  
+  "etudiant_info": {
+    "nom": "VOTRE_NOM",
+    "prenom": "VOTRE_PRENOM", 
+    "email": "votre.email@ecole.fr",
+    "date_soumission": "2024-09-30",
+    "groupe": "GROUPE_A_ou_B",
+    "commentaires": "Commentaires optionnels sur votre travail"
+  },
+
+  "analyse_ux": {
+    "description": "📊 Phase 1 : Analyse UX et recherche utilisateur",
+    
+    "personas": [
+      {
+        "nom": "Jean Dupont",
+        "age": 32,
+        "profession": "Développeur web",
+        "besoins": ["Support technique rapide", "Interface simple"],
+        "frustrations": ["Temps d'attente", "Complexité"],
+        "scenario_usage": "Créer un ticket pour bug critique en production"
+      },
+      {
+        "nom": "Marie Martin", 
+        "age": 28,
+        "profession": "Chef de projet",
+        "besoins": ["Suivi des tickets", "Reporting"],
+        "frustrations": ["Manque de visibilité", "Notifications"],
+        "scenario_usage": "Suivre l'avancement des tickets de son équipe"
+      }
+    ],
+
+    "cas_utilisation": [
+      {
+        "id": "UC001",
+        "titre": "Créer un ticket de support",
+        "acteur": "Utilisateur client",
+        "description": "L'utilisateur peut créer un nouveau ticket de support",
+        "preconditions": ["Être connecté", "Avoir un contrat support"],
+        "etapes": [
+          "Cliquer sur 'Nouveau ticket'",
+          "Remplir le formulaire",
+          "Joindre fichiers si nécessaire", 
+          "Valider la création"
+        ],
+        "postconditions": ["Ticket créé", "Email de confirmation envoyé"]
+      },
+      {
+        "id": "UC002", 
+        "titre": "Consulter le statut d'un ticket",
+        "acteur": "Utilisateur client",
+        "description": "L'utilisateur peut voir l'état d'avancement de ses tickets",
+        "preconditions": ["Être connecté", "Avoir des tickets"],
+        "etapes": [
+          "Accéder à 'Mes tickets'",
+          "Sélectionner un ticket",
+          "Voir les détails et historique"
+        ],
+        "postconditions": ["Informations affichées"]
+      },
+      {
+        "id": "UC003",
+        "titre": "Répondre à un ticket",
+        "acteur": "Technicien support", 
+        "description": "Le technicien peut apporter une réponse au client",
+        "preconditions": ["Être connecté", "Ticket assigné"],
+        "etapes": [
+          "Ouvrir le ticket",
+          "Rédiger la réponse", 
+          "Changer le statut si nécessaire",
+          "Envoyer la réponse"
+        ],
+        "postconditions": ["Réponse envoyée", "Client notifié"]
+      }
+    ],
+
+    "journey_maps": {
+      "client_creation_ticket": {
+        "etapes": [
+          {"action": "Connexion", "emotion": "😐", "points_contact": ["Site web"], "pain_points": []},
+          {"action": "Navigation", "emotion": "🤔", "points_contact": ["Menu"], "pain_points": ["Difficulté à trouver"]},
+          {"action": "Création", "emotion": "😟", "points_contact": ["Formulaire"], "pain_points": ["Trop de champs"]},
+          {"action": "Validation", "emotion": "😊", "points_contact": ["Confirmation"], "pain_points": []}
+        ],
+        "opportunites": ["Simplifier navigation", "Réduire formulaire", "Aide contextuelle"]
+      }
+    },
+
+    "insights": [
+      "Les utilisateurs privilégient la simplicité",
+      "Le support mobile est crucial",
+      "Les notifications temps réel sont attendues",
+      "L'historique des échanges doit être accessible"
+    ]
+  },
+
+  "conception": {
+    "description": "🎨 Phase 2 : Conception et design UI",
+    
+    "wireframes": [
+      {
+        "nom": "Accueil",
+        "description": "Page d'accueil avec services TechSolutions",
+        "url_figma": "https://www.figma.com/file/VOTRE_ID/wireframe-accueil",
+        "elements_cles": ["Hero banner", "Services", "Contact rapide"],
+        "justification": "Présentation claire de l'offre avec CTA visible"
+      },
+      {
+        "nom": "Mes tickets", 
+        "description": "Liste des tickets utilisateur avec filtres",
+        "url_figma": "https://www.figma.com/file/VOTRE_ID/wireframe-tickets",
+        "elements_cles": ["Liste tickets", "Filtres", "Nouveau ticket"],
+        "justification": "Interface de gestion centralisée et intuitive"
+      },
+      {
+        "nom": "Créer ticket",
+        "description": "Formulaire de création optimisé",
+        "url_figma": "https://www.figma.com/file/VOTRE_ID/wireframe-creation", 
+        "elements_cles": ["Formulaire", "Upload", "Preview"],
+        "justification": "Processus simplifié en étapes claires"
+      }
+    ],
+
+    "design_system": {
+      "colors": {
+        "primary": "#2563EB",
+        "secondary": "#10B981", 
+        "neutral": "#6B7280",
+        "success": "#059669",
+        "warning": "#D97706",
+        "error": "#DC2626",
+        "background": "#F9FAFB"
+      },
+      "typography": {
+        "heading": "Montserrat Bold",
+        "body": "Inter Regular",
+        "caption": "Inter Medium"
+      },
+      "spacing": {
+        "xs": "4px",
+        "sm": "8px", 
+        "md": "16px",
+        "lg": "24px",
+        "xl": "32px"
+      },
+      "elevation": {
+        "card": "0 1px 3px rgba(0,0,0,0.12)",
+        "modal": "0 10px 25px rgba(0,0,0,0.19)"
+      }
+    },
+
+    "composants_ui": [
+      {
+        "nom": "Button Primary",
+        "description": "Bouton principal pour actions importantes",
+        "usage": "CTA, validation formulaires",
+        "variants": ["Default", "Hover", "Disabled"]
+      },
+      {
+        "nom": "Card Ticket",
+        "description": "Carte d'affichage d'un ticket",
+        "usage": "Liste des tickets",
+        "variants": ["Open", "In Progress", "Closed"]
+      },
+      {
+        "nom": "Input Field",
+        "description": "Champ de saisie standardisé", 
+        "usage": "Formulaires",
+        "variants": ["Default", "Error", "Success"]
+      },
+      {
+        "nom": "Status Badge",
+        "description": "Badge de statut coloré",
+        "usage": "Statut des tickets",
+        "variants": ["Nouveau", "En cours", "Résolu", "Fermé"]
+      },
+      {
+        "nom": "Navigation Bar",
+        "description": "Barre de navigation principale",
+        "usage": "Navigation app",
+        "variants": ["Desktop", "Mobile"]
+      }
+    ],
+
+    "moodboard": {
+      "style": "Moderne et professionnel",
+      "inspirations": ["Design systems tech", "Apps de productivité"],
+      "mots_cles": ["Clean", "Efficient", "Trustworthy", "Accessible"]
+    }
+  },
+
+  "prototypage": {
+    "description": "🔗 Phase 3 : Prototypage et interactions",
+    
+    "lien_prototype": "https://www.figma.com/proto/VOTRE_ID/prototype-techsolutions",
+    
+    "interactions": [
+      {
+        "ecran_source": "Accueil",
+        "element": "Bouton 'Nouveau ticket'",
+        "ecran_cible": "Créer ticket",
+        "transition": "Slide left",
+        "justification": "Workflow naturel de création"
+      },
+      {
+        "ecran_source": "Mes tickets",
+        "element": "Card ticket",
+        "ecran_cible": "Détail ticket", 
+        "transition": "Push",
+        "justification": "Navigation hiérarchique"
+      },
+      {
+        "ecran_source": "Créer ticket",
+        "element": "Bouton valider",
+        "ecran_cible": "Confirmation",
+        "transition": "Fade",
+        "justification": "Feedback immédiat"
+      },
+      {
+        "ecran_source": "Menu",
+        "element": "Icon profil",
+        "ecran_cible": "Profil utilisateur",
+        "transition": "Modal",
+        "justification": "Accès rapide sans quitter contexte"
+      },
+      {
+        "ecran_source": "Global",
+        "element": "Tab navigation",
+        "ecran_cible": "Sections app",
+        "transition": "Instant",
+        "justification": "Navigation fluide entre sections"
+      }
+    ],
+
+    "navigation": {
+      "architecture": "Tab-based avec stack navigation",
+      "sections_principales": ["Accueil", "Mes tickets", "Nouveau", "Profil"],
+      "navigation_secondaire": ["Recherche", "Filtres", "Notifications"],
+      "retour_arriere": "Header back button + swipe gesture"
+    },
+
+    "micro_interactions": [
+      "Loading states sur boutons",
+      "Hover effects sur éléments cliquables", 
+      "Success animation après création ticket",
+      "Pull-to-refresh sur listes",
+      "Skeleton screens pendant chargement"
+    ],
+
+    "tests_utilisateurs": {
+      "scenarios_testes": [
+        "Créer un nouveau ticket",
+        "Rechercher un ticket existant",
+        "Répondre à un message support"
+      ],
+      "retours_obtenus": [
+        "Navigation intuitive",
+        "Formulaire trop long", 
+        "Boutons bien visibles"
+      ],
+      "ameliorations_apportees": [
+        "Réduction formulaire création",
+        "Ajout aide contextuelle",
+        "Amélioration contraste boutons"
+      ]
+    }
+  },
+
+  "qcm_responses": {
+    "description": "📝 Réponses aux QCM de validation",
+    
+    "phase1": {
+      "q1_methodologie_ux": "B",
+      "q1_justification": "La méthodologie UX commence par la recherche utilisateur",
+      "q2_personas": "A", 
+      "q2_justification": "Les personas représentent les utilisateurs types",
+      "q3_cas_utilisation": "C",
+      "q3_justification": "Les cas d'utilisation décrivent les interactions",
+      "q4_journey_mapping": "B",
+      "q4_justification": "Le journey mapping visualise l'expérience utilisateur"
+    },
+
+    "phase2": {
+      "q1_wireframes": "A",
+      "q1_justification": "Les wireframes définissent la structure",
+      "q2_design_system": "B",
+      "q2_justification": "Le design system assure la cohérence",
+      "q3_couleurs": "C", 
+      "q3_justification": "Les couleurs ont un impact émotionnel",
+      "q4_typographie": "A",
+      "q4_justification": "La typographie améliore la lisibilité",
+      "q5_composants": "B",
+      "q5_justification": "Les composants facilitent la maintenance",
+      "q6_accessibilite": "C",
+      "q6_justification": "L'accessibilité est cruciale pour l'inclusion"
+    },
+
+    "phase3": {
+      "q1_prototypage": "A",
+      "q1_justification": "Le prototypage valide les concepts",
+      "q2_interactions": "B", 
+      "q2_justification": "Les interactions guident l'utilisateur",
+      "q3_tests_utilisateurs": "C",
+      "q3_justification": "Les tests révèlent les problèmes d'usage"
+    },
+
+    "final": {
+      "q1_methodologie_complete": "B",
+      "q1_justification": "L'approche UX est itérative",
+      "q2_outils_figma": "A",
+      "q2_justification": "Figma excelle en collaboration",
+      "q3_livrables": "C", 
+      "q3_justification": "La documentation est essentielle",
+      "q4_amelioration_continue": "B",
+      "q4_justification": "L'amélioration continue optimise l'expérience"
+    }
+  },
+
+  "auto_evaluation": {
+    "description": "📊 Auto-évaluation de votre progression",
+    
+    "analyse_ux_score": 4,
+    "analyse_ux_commentaire": "Bonne compréhension des personas et cas d'utilisation",
+    
+    "conception_score": 4,
+    "conception_commentaire": "Design system cohérent, wireframes clairs",
+    
+    "prototypage_score": 3,
+    "prototypage_commentaire": "Interactions basiques, pourrait être plus riche",
+    
+    "points_forts": [
+      "Méthodologie UX bien appliquée",
+      "Design cohérent avec la charte",
+      "Documentation complète"
+    ],
+    
+    "points_amelioration": [
+      "Plus d'interactions dans le prototype",
+      "Tests utilisateurs plus approfondis", 
+      "Optimisation mobile"
+    ],
+    
+    "satisfaction_globale": 4,
+    "satisfaction_commentaire": "Atelier très formatif, objectifs atteints",
+    
+    "temps_passe": {
+      "analyse_ux": "35 minutes",
+      "conception": "95 minutes", 
+      "prototypage": "85 minutes",
+      "total": "215 minutes"
+    },
+    
+    "difficultes_rencontrees": [
+      "Création des composants complexes",
+      "Gestion des contraintes responsive"
+    ],
+    
+    "suggestions_atelier": [
+      "Plus d'exemples de micro-interactions",
+      "Temps supplémentaire pour le prototypage"
+    ]
+  },
+
+  "ressources_utilisees": {
+    "documentation": [
+      "Dossier étudiant complet",
+      "Guide des bonnes pratiques UX/UI",
+      "Charte graphique TechSolutions"
+    ],
+    "outils": [
+      "Figma (design et prototypage)",
+      "FigJam (brainstorming)",
+      "Notion (documentation)"
+    ],
+    "inspirations": [
+      "Dribbble pour l'inspiration UI",
+      "Material Design guidelines",
+      "Apple Human Interface Guidelines"
+    ]
+  },
+
+  "fichiers_joints": {
+    "note": "Liens vers vos fichiers Figma et documentation",
+    "fichier_figma_principal": "https://www.figma.com/file/VOTRE_ID/atelier-techsolutions",
+    "fichier_figma_wireframes": "https://www.figma.com/file/VOTRE_ID/wireframes-techsolutions", 
+    "documentation_pdf": "URL vers votre documentation exportée",
+    "presentation": "URL vers votre présentation finale"
+  },
+
+  "metadata": {
+    "version_template": "1.0",
+    "date_template": "2024-09-30",
+    "format_attendu": "JSON strict",
+    "encodage": "UTF-8",
+    "validation": "Tests automatiques GitHub Classroom"
+  }
+}

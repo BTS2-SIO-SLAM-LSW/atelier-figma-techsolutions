@@ -1,0 +1,30 @@
+{
+  "etudiant": {
+    "nom": "Nom Prénom",
+    "email": "email@example.com",
+    "groupe": "Groupe X",
+    "date_soumission": "2025-09-30T14:30:00Z"
+  },
+  "phase2_conception": {
+    "question1": "",
+    "question2": "",
+    "question3": "",
+    "question4": "",
+    "question5": "",
+    "question6": ""
+  },
+  "prototype_info": {
+    "url_figma": "",
+    "nb_ecrans_crees": 0,
+    "navigation_fonctionnelle": false,
+    "charte_respectee": false,
+    "temps_passe_minutes": 90
+  },
+  "auto_evaluation": {
+    "difficulte_figma": "facile|moyen|difficile",
+    "satisfaction_design": "1-5",
+    "confiance_presentation": "1-5",
+    "aide_necessaire": ""
+  },
+  "commentaires": "Commentaires libres sur cette phase"
+}
