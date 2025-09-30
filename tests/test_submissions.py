@@ -237,6 +237,35 @@ class FigmaWorkshopTester:
         self.score = 0
         self.max_score = 15
         
+        # Bonnes réponses pour validation automatique
+        correct_answers = {
+            "phase1": {
+                "q1_cas_utilisation": "b",
+                "q2_interview_thomas": "b", 
+                "q3_priorisation": "c",
+                "q4_acteurs": "c"
+            },
+            "phase2": {
+                "q1_outils_figma": "b",
+                "q2_composants_instances": "b",
+                "q3_charte_graphique": "b",
+                "q4_hierarchie_visuelle": "c",
+                "q5_ergonomie_tablette": "c",
+                "q6_prototypage": "b"
+            },
+            "phase3": {
+                "q1_justification_ux": "c",
+                "q2_loi_fitts": "c",
+                "q3_feedback_utilisateur": "c"
+            },
+            "final": {
+                "q1_methodologie_ux": "b",
+                "q2_outils_collaboratifs": "b",
+                "q3_mesure_succes": "b",
+                "q4_iteration_design": "b"
+            }
+        }
+        
         try:
             submission = self.load_submission()
             
@@ -246,29 +275,42 @@ class FigmaWorkshopTester:
                 return False
             
             qcm = submission["qcm_responses"]
-            expected_phases = ["phase1", "phase2", "phase3", "final"]
+            total_questions = 0
+            correct_responses = 0
             
-            for phase in expected_phases:
+            for phase, expected_answers in correct_answers.items():
                 if phase in qcm:
                     phase_answers = qcm[phase]
                     if isinstance(phase_answers, dict) and len(phase_answers) > 0:
-                        self.score += 3
                         print(f"✅ QCM {phase}: réponses présentes")
                         
-                        # Vérification que les réponses ne sont pas vides
-                        valid_answers = sum(1 for v in phase_answers.values() if v is not None and v != "")
-                        if valid_answers >= len(phase_answers) * 0.8:  # 80% des réponses
-                            self.score += 1
-                            print(f"✅ QCM {phase}: réponses complètes")
+                        # Validation des réponses correctes
+                        for question, correct_answer in expected_answers.items():
+                            total_questions += 1
+                            if question in phase_answers:
+                                student_answer = phase_answers[question]
+                                if student_answer == correct_answer:
+                                    correct_responses += 1
+                                    print(f"✅ QCM {phase}.{question}: réponse correcte")
+                                else:
+                                    print(f"❌ QCM {phase}.{question}: {student_answer} (attendu: {correct_answer})")
+                            else:
+                                self.errors.append(f"❌ QCM {phase}: question {question} manquante")
                     else:
                         self.errors.append(f"❌ QCM {phase}: réponses manquantes")
                 else:
                     self.errors.append(f"❌ QCM {phase}: section manquante")
             
-            # Bonus pour justifications
-            if any("justification" in str(phase_data) for phase_data in qcm.values()):
-                self.score += 3
-                print("✅ Bonus: Justifications présentes")
+            # Calcul du score basé sur le pourcentage de bonnes réponses
+            if total_questions > 0:
+                percentage = (correct_responses / total_questions) * 100
+                self.score = int((percentage / 100) * self.max_score)
+                print(f"📊 Réponses correctes: {correct_responses}/{total_questions} ({percentage:.1f}%)")
+            
+            # Bonus pour completion
+            if correct_responses >= total_questions * 0.8:  # 80% ou plus
+                self.score += 2
+                print("✅ Bonus: Excellents résultats QCM")
         
         except Exception as e:
             self.errors.append(f"❌ Erreur QCM: {e}")

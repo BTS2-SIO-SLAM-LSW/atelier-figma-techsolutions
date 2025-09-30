@@ -25,12 +25,6 @@ L'atelier suit une **méthodologie UX complète** : analyse d'interviews utilisa
 | 30 min | **Présentation** - Demo des prototypes et justifications | [Grille d'évaluation](ressources/grille_auto_evaluation.md) + [QCM Phase 3](qcm/qcm_phase3_presentation.md) |
 | 25 min | **Livraison** - Documentation et synthèse UX | [Template synthèse](ressources/dossier_etudiant.md) + [QCM Final](qcm/qcm_final_synthese.md) |
 
-### 🎯 **Nouveautés 2024-2025**
-- **QCM intermédiaires** : Validation de compréhension après chaque phase
-- **Auto-évaluation** : Suivi personnel de progression par les étudiants
-- **Prototype exemple** : Référence de qualité avec justifications UX détaillées
-- **Méthodologie avancée** : Personas, journey maps, tests utilisateurs
-- **Bonnes pratiques** : Recueil des règles d'or UX/UI avec exemples concrets
 
 ## 📁 Structure du repository (Nouvelle organisation 2024-2025)
 
@@ -337,10 +331,6 @@ Ce repository est **compatible GitHub Classroom** avec :
 
 ---
 
-## 📄 Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
 ## 🤝 Contributions
 
 Les contributions sont les bienvenues ! N'hésitez pas à :
@@ -350,4 +340,3 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 ---
 
-*📝 Projet maintenu par l'équipe pédagogique - Version 2024-2025*

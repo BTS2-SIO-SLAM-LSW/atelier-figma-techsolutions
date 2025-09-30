@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM Phase 1 - Analyse UX</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .question { background: #f5f5f5; padding: 15px; margin: 15px 0; border-radius: 8px; }
+        .question h3 { color: #2563EB; margin-top: 0; }
+        .answers { margin: 10px 0; }
+        .answers label { display: block; margin: 8px 0; cursor: pointer; }
+        .answers input { margin-right: 8px; }
+        button { background: #2563EB; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #1d4ed8; }
+        .result { margin: 20px 0; padding: 15px; border-radius: 8px; }
+        .correct { background: #d1fae5; color: #065f46; }
+        .incorrect { background: #fee2e2; color: #991b1b; }
+        .score { font-size: 24px; font-weight: bold; text-align: center; margin: 20px 0; }
+        .json-output { background: #1f2937; color: #f9fafb; padding: 15px; border-radius: 8px; font-family: monospace; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1>🎯 QCM Phase 1 - Analyse UX</h1>
+    <p><strong>Instructions :</strong> Répondez aux 4 questions ci-dessous. À la fin, vous obtiendrez vos réponses au format JSON à copier dans votre fichier de soumission.</p>
+
+    <div class="question">
+        <h3>Question 1 : Quelle est la première étape de la méthodologie UX ?</h3>
+        <div class="answers">
+            <label><input type="radio" name="q1" value="A"> A) Création des wireframes</label>
+            <label><input type="radio" name="q1" value="B"> B) Recherche utilisateur et analyse des besoins</label>
+            <label><input type="radio" name="q1" value="C"> C) Design de l'interface</label>
+            <label><input type="radio" name="q1" value="D"> D) Développement du prototype</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Question 2 : Que représentent les personas en UX ?</h3>
+        <div class="answers">
+            <label><input type="radio" name="q2" value="A"> A) Des représentations fictives d'utilisateurs types</label>
+            <label><input type="radio" name="q2" value="B"> B) Des concurrents de l'entreprise</label>
+            <label><input type="radio" name="q2" value="C"> C) Des employés de l'entreprise</label>
+            <label><input type="radio" name="q2" value="D"> D) Des fonctionnalités du produit</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Question 3 : À quoi servent les cas d'utilisation ?</h3>
+        <div class="answers">
+            <label><input type="radio" name="q3" value="A"> A) À définir les couleurs du design</label>
+            <label><input type="radio" name="q3" value="B"> B) À choisir la technologie de développement</label>
+            <label><input type="radio" name="q3" value="C"> C) À décrire les interactions entre utilisateurs et système</label>
+            <label><input type="radio" name="q3" value="D"> D) À calculer le budget du projet</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Question 4 : Qu'est-ce qu'un customer journey map ?</h3>
+        <div class="answers">
+            <label><input type="radio" name="q4" value="A"> A) Un plan du site web</label>
+            <label><input type="radio" name="q4" value="B"> B) Une visualisation du parcours utilisateur</label>
+            <label><input type="radio" name="q4" value="C"> C) Un schéma de base de données</label>
+            <label><input type="radio" name="q4" value="D"> D) Un organigramme de l'entreprise</label>
+        </div>
+    </div>
+
+    <button onclick="checkAnswers()">✅ Valider mes réponses</button>
+
+    <div id="results"></div>
+    
+    <div id="json-section" style="display: none;">
+        <h2>📝 Résultats pour votre soumission JSON</h2>
+        <p>Copiez le JSON ci-dessous dans la section <code>"qcm_responses" → "phase1"</code> de votre fichier <code>submissions/my_submission.json</code> :</p>
+        <div id="json-output" class="json-output"></div>
+        <button onclick="copyToClipboard()">📋 Copier le JSON</button>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'B',
+            q2: 'A', 
+            q3: 'C',
+            q4: 'B'
+        };
+
+        const explanations = {
+            q1: "La recherche utilisateur est toujours la première étape pour comprendre les besoins.",
+            q2: "Les personas représentent des archétypes d'utilisateurs basés sur la recherche.",
+            q3: "Les cas d'utilisation décrivent comment les utilisateurs interagissent avec le système.",
+            q4: "Le customer journey map visualise l'expérience utilisateur étape par étape."
+        };
+
+        function checkAnswers() {
+            const userAnswers = {};
+            let score = 0;
+            let resultsHTML = '';
+
+            // Récupérer les réponses
+            for (let i = 1; i <= 4; i++) {
+                const answer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (answer) {
+                    userAnswers[`q${i}`] = answer.value;
+                    if (answer.value === correctAnswers[`q${i}`]) {
+                        score++;
+                        resultsHTML += `<div class="result correct">
+                            <strong>Question ${i} : ✅ Correct</strong><br>
+                            ${explanations[`q${i}`]}
+                        </div>`;
+                    } else {
+                        resultsHTML += `<div class="result incorrect">
+                            <strong>Question ${i} : ❌ Incorrect</strong><br>
+                            Votre réponse : ${answer.value} | Bonne réponse : ${correctAnswers[`q${i}`]}<br>
+                            ${explanations[`q${i}`]}
+                        </div>`;
+                    }
+                } else {
+                    resultsHTML += `<div class="result incorrect">
+                        <strong>Question ${i} : ⚠️ Non répondue</strong>
+                    </div>`;
+                }
+            }
+
+            // Afficher le score
+            resultsHTML = `<div class="score">📊 Score : ${score}/4 (${Math.round(score/4*100)}%)</div>` + resultsHTML;
+
+            document.getElementById('results').innerHTML = resultsHTML;
+
+            // Générer le JSON pour la soumission
+            const jsonOutput = {
+                "q1_methodologie_ux": userAnswers.q1 || "",
+                "q1_justification": userAnswers.q1 === correctAnswers.q1 ? "✅ Correct" : "❌ À revoir",
+                "q2_personas": userAnswers.q2 || "",
+                "q2_justification": userAnswers.q2 === correctAnswers.q2 ? "✅ Correct" : "❌ À revoir", 
+                "q3_cas_utilisation": userAnswers.q3 || "",
+                "q3_justification": userAnswers.q3 === correctAnswers.q3 ? "✅ Correct" : "❌ À revoir",
+                "q4_journey_mapping": userAnswers.q4 || "",
+                "q4_justification": userAnswers.q4 === correctAnswers.q4 ? "✅ Correct" : "❌ À revoir"
+            };
+
+            document.getElementById('json-output').textContent = JSON.stringify(jsonOutput, null, 2);
+            document.getElementById('json-section').style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const jsonText = document.getElementById('json-output').textContent;
+            navigator.clipboard.writeText(jsonText).then(function() {
+                alert('✅ JSON copié dans le presse-papiers !');
+            });
+        }
+    </script>
+</body>
+</html>

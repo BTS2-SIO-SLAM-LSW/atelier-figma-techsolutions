@@ -243,22 +243,6 @@ Si vous modifiez `student_template.json` :
 3. **Tester** avec un repository de test
 
 ---
-
-## 📚 Ressources complémentaires
-
-### Documentation officielle
-- [GitHub Classroom Docs](https://docs.github.com/en/education/manage-coursework-with-github-classroom)
-- [Autograding Guide](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/use-autograding)
-- [GitHub Actions](https://docs.github.com/en/actions)
-
-### Communauté
-- [GitHub Education Community](https://education.github.community/)
-- [GitHub Classroom Forum](https://github.com/education/classroom/discussions)
-
-### Formations
-- [GitHub Teacher Training](https://education.github.com/teachers)
-- [GitHub Campus Experts](https://education.github.com/students/experts)
-
 ---
 
 ## 🎯 Checklist de déploiement
@@ -288,4 +272,3 @@ Si vous modifiez `student_template.json` :
 
 ---
 
-*📝 Guide maintenu par l'équipe pédagogique - Version GitHub Classroom 2024-2025*

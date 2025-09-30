@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM Phase 1 : Analyse UX</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            font-weight: 600;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .progress-bar {
+            background-color: #e9ecef;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-container {
+            background: white;
+            margin: 25px 0;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+        }
+        .question-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .question-number {
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #34495e;
+            font-weight: 500;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
+        }
+        .option:hover {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+            transform: translateX(5px);
+        }
+        .option input[type="radio"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+            accent-color: #667eea;
+        }
+        .option label {
+            cursor: pointer;
+            font-size: 1em;
+            color: #2c3e50;
+            flex: 1;
+        }
+        .option.selected {
+            border-color: #667eea;
+            background-color: #f8f9ff;
+        }
+        .submit-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        .submit-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .results {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: none;
+        }
+        .score-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: white;
+        }
+        .score-excellent { background: linear-gradient(135deg, #28a745 0%, #20c997 100%); }
+        .score-good { background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%); }
+        .score-average { background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%); }
+        .score-poor { background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%); }
+        .feedback {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .explanation {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .correct-answer {
+            color: #28a745;
+            font-weight: 600;
+        }
+        .json-output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .json-content {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .star {
+            color: #ffd700;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 QCM Phase 1 : Analyse UX</h1>
+        <p>Validation après 30 minutes d'analyse</p>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <form id="qcmForm">
+        <!-- Question 1 -->
+        <div class="question-container">
+            <div class="question-title">
+                <div class="question-number">1</div>
+                Format des cas d'utilisation <span class="star">⭐</span>
+            </div>
+            <div class="question-text">Comment doit-on rédiger un cas d'utilisation ?</div>
+            
+            <div class="option">
+                <input type="radio" id="q1a" name="q1" value="a">
+                <label for="q1a">"L'utilisateur doit pouvoir créer un ticket"</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1b" name="q1" value="b">
+                <label for="q1b">"En tant que technicien, je veux créer un ticket pour traiter une demande client"</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1c" name="q1" value="c">
+                <label for="q1c">"Le système permet de créer des tickets"</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q1d" name="q1" value="d">
+                <label for="q1d">"Créer un ticket rapidement"</label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-container">
+            <div class="question-title">
+                <div class="question-number">2</div>
+                Analyse des interviews <span class="star">⭐</span>
+            </div>
+            <div class="question-text">D'après l'interview de Thomas, quel est le principal problème avec l'outil actuel ?</div>
+            
+            <div class="option">
+                <input type="radio" id="q2a" name="q2" value="a">
+                <label for="q2a">L'interface manque de couleurs</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2b" name="q2" value="b">
+                <label for="q2b">La création de ticket nécessite 12 champs sur 3 onglets</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2c" name="q2" value="c">
+                <label for="q2c">Il n'y a pas de notifications</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q2d" name="q2" value="d">
+                <label for="q2d">L'outil n'est pas accessible sur mobile</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-container">
+            <div class="question-title">
+                <div class="question-number">3</div>
+                Priorisation UX <span class="star">⭐</span>
+            </div>
+            <div class="question-text">Comment prioriser les cas d'utilisation ?</div>
+            
+            <div class="option">
+                <input type="radio" id="q3a" name="q3" value="a">
+                <label for="q3a">Par ordre alphabétique</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3b" name="q3" value="b">
+                <label for="q3b">Par facilité technique de développement</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3c" name="q3" value="c">
+                <label for="q3c">Par fréquence d'usage et impact utilisateur</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q3d" name="q3" value="d">
+                <label for="q3d">Par préférence de l'équipe design</label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-container">
+            <div class="question-title">
+                <div class="question-number">4</div>
+                Acteurs identifiés <span class="star">⭐</span>
+            </div>
+            <div class="question-text">Quels sont les 4 types d'acteurs principaux identifiés dans les interviews ?</div>
+            
+            <div class="option">
+                <input type="radio" id="q4a" name="q4" value="a">
+                <label for="q4a">Admin, Modérateur, Visiteur, Client</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4b" name="q4" value="b">
+                <label for="q4b">Junior, Senior, Manager, Externe</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4c" name="q4" value="c">
+                <label for="q4c">Technicien junior, Technicien senior, Chef équipe, Technicien itinérant</label>
+            </div>
+            <div class="option">
+                <input type="radio" id="q4d" name="q4" value="d">
+                <label for="q4d">Développeur, Designer, Product Owner, Utilisateur</label>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button type="button" class="submit-btn" id="submitBtn" onclick="submitQCM()">
+                Valider mes réponses
+            </button>
+        </div>
+    </form>
+
+    <div class="results" id="results">
+        <div class="score-display">
+            <div class="score-circle" id="scoreCircle">
+                <span id="scoreText">0/4</span>
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="explanation">
+            <h3>📊 Correction détaillée :</h3>
+            <div id="explanationText"></div>
+        </div>
+
+        <div class="json-output">
+            <h3>📋 Données pour GitHub Classroom :</h3>
+            <div class="json-content" id="jsonContent"></div>
+            <button class="copy-btn" onclick="copyJSON()">Copier le JSON</button>
+            <p><small>💡 <strong>Instructions :</strong> Copiez ce JSON et collez-le dans le fichier <code>submission.json</code> de votre dépôt GitHub.</small></p>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'b', 
+            q3: 'c',
+            q4: 'c'
+        };
+
+        const explanations = {
+            q1: '<span class="correct-answer">Réponse b)</span> - Format standard "En tant que... je veux... pour..." respecte la méthodologie agile.',
+            q2: '<span class="correct-answer">Réponse b)</span> - Thomas mentionne explicitement cette complexité excessive dans son interview.',
+            q3: '<span class="correct-answer">Réponse c)</span> - La priorisation UX se base sur les besoins utilisateurs réels, pas sur des contraintes techniques.',
+            q4: '<span class="correct-answer">Réponse c)</span> - Les 4 profils distincts révélés par l\'analyse des interviews utilisateurs.'
+        };
+
+        // Gestion des sélections
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Retirer la classe selected de toutes les options de cette question
+                const questionName = this.name;
+                document.querySelectorAll(`input[name="${questionName}"]`).forEach(r => {
+                    r.closest('.option').classList.remove('selected');
+                });
+                
+                // Ajouter la classe selected à l'option choisie
+                this.closest('.option').classList.add('selected');
+                
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            const totalQuestions = 4;
+            let answered = 0;
+            
+            for (let i = 1; i <= totalQuestions; i++) {
+                const question = document.querySelector(`input[name="q${i}"]:checked`);
+                if (question) answered++;
+            }
+            
+            const progress = (answered / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            const submitBtn = document.getElementById('submitBtn');
+            if (answered === totalQuestions) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Valider mes réponses ✅';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.textContent = `Répondre aux ${totalQuestions - answered} questions restantes`;
+            }
+        }
+
+        function submitQCM() {
+            const answers = {};
+            let score = 0;
+            
+            // Collecter les réponses
+            for (let i = 1; i <= 4; i++) {
+                const question = document.querySelector(`input[name="q${i}"]:checked`);
+                if (question) {
+                    answers[`q${i}`] = question.value;
+                    if (question.value === correctAnswers[`q${i}`]) {
+                        score++;
+                    }
+                }
+            }
+            
+            // Afficher les résultats
+            showResults(score, answers);
+        }
+
+        function showResults(score, answers) {
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('qcmForm').style.display = 'none';
+            
+            // Affichage du score
+            const scoreText = document.getElementById('scoreText');
+            const scoreCircle = document.getElementById('scoreCircle');
+            const feedback = document.getElementById('feedback');
+            
+            scoreText.textContent = `${score}/4`;
+            
+            let feedbackText, circleClass;
+            if (score === 4) {
+                feedbackText = '🎉 Excellent ! Passez à la conception';
+                circleClass = 'score-excellent';
+            } else if (score === 3) {
+                feedbackText = '✅ Bien ! Vous pouvez continuer';
+                circleClass = 'score-good';
+            } else if (score === 2) {
+                feedbackText = '⚠️ Relisez rapidement les interviews (5 min)';
+                circleClass = 'score-average';
+            } else {
+                feedbackText = '🔄 Reprise nécessaire avec l\'enseignant';
+                circleClass = 'score-poor';
+            }
+            
+            feedback.textContent = feedbackText;
+            scoreCircle.className = `score-circle ${circleClass}`;
+            
+            // Affichage des explications
+            let explanationHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                explanationHTML += `<p><strong>Question ${i} :</strong> ${explanations[`q${i}`]}</p>`;
+            }
+            document.getElementById('explanationText').innerHTML = explanationHTML;
+            
+            // Génération du JSON pour GitHub Classroom
+            generateJSON(score, answers);
+        }
+
+        function generateJSON(score, answers) {
+            const submissionData = {
+                student_info: {
+                    timestamp: new Date().toISOString(),
+                    qcm_phase: "phase1_analyse_ux"
+                },
+                qcm_responses: {
+                    phase1: {
+                        q1_cas_utilisation: answers.q1 || "non_repondu",
+                        q2_interview_thomas: answers.q2 || "non_repondu", 
+                        q3_priorisation: answers.q3 || "non_repondu",
+                        q4_acteurs: answers.q4 || "non_repondu"
+                    }
+                },
+                scores: {
+                    qcm_phase1_score: score,
+                    qcm_phase1_total: 4,
+                    qcm_phase1_percentage: Math.round((score / 4) * 100)
+                }
+            };
+            
+            const jsonString = JSON.stringify(submissionData, null, 2);
+            document.getElementById('jsonContent').textContent = jsonString;
+        }
+
+        function copyJSON() {
+            const jsonContent = document.getElementById('jsonContent').textContent;
+            navigator.clipboard.writeText(jsonContent).then(function() {
+                const copyBtn = document.querySelector('.copy-btn');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copié ! ✅';
+                copyBtn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.style.background = '#667eea';
+                }, 2000);
+            });
+        }
+
+        // Initialisation
+        updateProgress();
+    </script>
+</body>
+</html>
