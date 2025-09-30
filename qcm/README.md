@@ -1,46 +1,56 @@
 # 📋 QCM Interactifs - Atelier Figma TechSolutions
 
-## 🎯 Instructions pour les Étudiants
+## � **Accès principal via GitHub Pages**
 
-Bienvenue dans le système d'évaluation interactif de l'atelier Figma ! Vous devez compléter **4 QCM** au fur et à mesure de votre progression.
+### 🚀 **Interface web moderne**
+**[🌐 Accéder aux QCM via GitHub Pages](https://bts2-sio-slam-lsw.github.io/atelier-figma-techsolutions)**
+
+Page d'accueil avec navigation guidée et interface moderne pour tous les QCM interactifs.
 
 ---
 
-## 🚀 Comment utiliser les QCM Interactifs
+## 🎯 QCM HTML Interactifs
 
-### 📖 Étape 1 : Ouvrir le QCM correspondant à votre phase
+### � **Accès direct aux QCM HTML**
 
-**Cliquez directement sur le lien QCM de la phase en cours :**
+| Phase | Fichier QCM HTML | Questions | Timing |
+|-------|------------------|-----------|---------|
+| 🔍 **Phase 1 - Analyse UX** | [**🚀 QCM Phase 1**](qcm_phase1_analyse_ux.html) | 4 questions | Après 30 min d'analyse |
+| 🎨 **Phase 2 - Conception** | [**🚀 QCM Phase 2**](qcm_phase2_conception.html) | 6 questions | Après 90 min de conception |
+| 🎤 **Phase 3 - Présentation** | [**🚀 QCM Phase 3**](qcm_phase3_presentation.html) | 3 questions | Après présentation orale |
+| 📊 **Phase 4 - Synthèse** | [**🚀 QCM Final**](qcm_final_synthese.html) | 4 questions | Fin de l'atelier |
 
-| Phase | Fichier QCM | Questions | Timing |
-|-------|-------------|-----------|---------|
-| 🔍 **Phase 1 - Analyse UX** | [**🚀 Ouvrir QCM Phase 1**](qcm_phase1_analyse_ux.html) | 4 questions | Après 30 min d'analyse |
-| 🎨 **Phase 2 - Conception** | [**🚀 Ouvrir QCM Phase 2**](qcm_phase2_conception.html) | 6 questions | Après 90 min de conception |
-| 🎤 **Phase 3 - Présentation** | [**🚀 Ouvrir QCM Phase 3**](qcm_phase3_presentation.html) | 3 questions | Après votre présentation |
-| 📊 **Phase 4 - Synthèse** | [**🚀 Ouvrir QCM Final**](qcm_final_synthese.html) | 4 questions | À la fin de l'atelier |
+### ✨ **Fonctionnalités des QCM HTML**
+- ✅ **Validation en temps réel** - Bouton "Valider" activé automatiquement
+- 📊 **Score instantané** - Affichage immédiat des résultats
+- 💡 **Explications détaillées** - Justifications des bonnes réponses
+- 📋 **Génération JSON** - Format compatible GitHub Classroom
+- 📱 **Design responsive** - Fonctionne sur mobile et desktop
+- 🎨 **Thèmes visuels** - Couleurs spécifiques par phase
 
-### ✅ Étape 2 : Répondre aux questions
+---
 
-1. **Lisez attentivement** chaque question
-2. **Cliquez** sur la réponse de votre choix
-3. **Suivez la progression** avec la barre en haut
-4. Le bouton **"Valider"** s'active quand toutes les questions sont répondues
+## 🎯 Instructions pour les Étudiants
 
-### 📊 Étape 3 : Consulter vos résultats
+### � Méthode recommandée
 
-Après validation, vous obtenez :
-- 🎯 **Votre score** affiché dans un cercle coloré
-- 📝 **Explications détaillées** des bonnes réponses
-- 💡 **Conseils personnalisés** selon votre performance
+**🌐 Option 1 : Via GitHub Pages (Recommandé)**
+1. Aller sur : `https://bts2-sio-slam-lsw.github.io/atelier-figma-techsolutions`
+2. Cliquer sur le QCM de votre phase
+3. Interface moderne avec navigation guidée
 
-### 📋 Étape 4 : Récupérer votre JSON
+**🔗 Option 2 : Liens directs HTML**
+1. Cliquer directement sur les liens ci-dessus
+2. Accès direct aux fichiers HTML
 
-**IMPORTANT** : Vous devez copier le JSON généré !
+### ✅ Workflow QCM
 
-1. **Descendez** jusqu'à la section "Données pour GitHub Classroom"
-2. **Cliquez** sur le bouton "Copier le JSON"
-3. **Ouvrez** le fichier `submission.json` à la racine du projet
-4. **Collez** le contenu dans la section appropriée
+1. **Répondre aux questions** - Sélectionner les réponses
+2. **Valider automatiquement** - Le bouton s'active seul
+3. **Consulter les résultats** - Score et explications
+4. **Copier le JSON** - Bouton "Copier le JSON"
+5. **Coller dans submission.json** - Format GitHub Classroom
+6. **Commit et push** - Soumission automatique
 
 ---
 
