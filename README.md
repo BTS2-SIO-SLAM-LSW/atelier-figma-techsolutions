@@ -70,17 +70,33 @@ L'atelier suit une **méthodologie UX complète** : analyse d'interviews utilisa
 
 ## 📋 QCM et Évaluations
 
-### 🎯 **Répertoire centralisé** : [`qcm/`](qcm/README.md)
+### � **Accès direct GitHub Pages**
 
-**QCM par phase** (étudiants) :
-- [`qcm/qcm_phase1_analyse_ux.md`](qcm/qcm_phase1_analyse_ux.md) - **Phase 1** : Analyse UX (4 questions, 5 min)
-- [`qcm/qcm_phase2_conception.md`](qcm/qcm_phase2_conception.md) - **Phase 2** : Conception (6 questions, 5 min)  
-- [`qcm/qcm_phase3_presentation.md`](qcm/qcm_phase3_presentation.md) - **Phase 3** : Présentation (3 questions, 3 min)
-- [`qcm/qcm_final_synthese.md`](qcm/qcm_final_synthese.md) - **Synthèse finale** : Bilan complet (4 questions, 5 min)
+**🚀 Interface web des QCM** : [https://bts2-sio-slam-lsw.github.io/atelier-figma-techsolutions](https://bts2-sio-slam-lsw.github.io/atelier-figma-techsolutions)
 
-**Outils enseignants** :
-- [`qcm/qcm_enseignant_observation.md`](qcm/qcm_enseignant_observation.md) - Grille d'observation temps réel
-- [`qcm/qcm_intermediaires.md`](qcm/qcm_intermediaires.md) - QCM complet consolidé
+Les étudiants accèdent aux QCM directement via le navigateur avec une interface moderne et intuitive.
+
+### 🎯 **QCM interactifs disponibles**
+
+**QCM par phase** (interface web) :
+- **Phase 1** : Analyse UX (4 questions, 5 min) - QCM violet avec feedback immédiat
+- **Phase 2** : Conception (6 questions, 5 min) - QCM bleu avec validation temps réel
+- **Phase 3** : Présentation (3 questions, 3 min) - QCM vert avec génération JSON
+- **Phase 4** : Synthèse finale (4 questions, 5 min) - QCM multicolore avec récap complet
+
+**Fonctionnalités des QCM web** :
+- ✅ **Validation en temps réel** - Bouton "Valider" activé automatiquement
+- 📊 **Score instantané** - Affichage immédiat des résultats
+- 💡 **Explications détaillées** - Justifications des bonnes réponses
+- 📋 **Génération JSON** - Format compatible GitHub Classroom
+- 📱 **Responsive design** - Fonctionne sur mobile et desktop
+- 🎨 **Thèmes visuels** - Couleurs spécifiques par phase
+
+**Fichiers sources** (répertoire `qcm/`) :
+- [`qcm/qcm_phase1_analyse_ux.html`](qcm/qcm_phase1_analyse_ux.html) - QCM Phase 1 interactif
+- [`qcm/qcm_phase2_conception.html`](qcm/qcm_phase2_conception.html) - QCM Phase 2 interactif  
+- [`qcm/qcm_phase3_presentation.html`](qcm/qcm_phase3_presentation.html) - QCM Phase 3 interactif
+- [`qcm/qcm_final_synthese.html`](qcm/qcm_final_synthese.html) - QCM Final interactif
 
 **📊 Total** : 17 questions (4+6+3+4) - **18 minutes** d'évaluation
 
@@ -185,7 +201,23 @@ Les participants créent l'interface d'une **application mobile** pour **TechSol
 
 ## 🌐 GitHub Classroom - Évaluation automatique
 
-### 📖 **Qu'est-ce que l'autograding ?**
+### � **Activation GitHub Pages**
+
+**Configuration automatique** :
+1. Aller dans **Settings** → **Pages** du repository
+2. Sélectionner **Source** : `Deploy from a branch`
+3. **Branch** : `main` / `/ (root)`
+4. Cliquer **Save**
+
+🌐 **URL automatique** : `https://bts2-sio-slam-lsw.github.io/atelier-figma-techsolutions`
+
+Le site sera **automatiquement généré** avec :
+- Page d'accueil avec navigation vers les QCM
+- QCM interactifs accessibles en un clic
+- Interface responsive et moderne
+- Tracking des interactions pour les analytics
+
+### �📖 **Qu'est-ce que l'autograding ?**
 
 L'**autograding** (évaluation automatique) permet de donner un **feedback immédiat** aux étudiants quand ils soumettent leur travail. GitHub Actions exécute automatiquement des **tests Python** qui vérifient :
 

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QCM Atelier Figma TechSolutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .intro p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .qcm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .qcm-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qcm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+        
+        .qcm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        .phase-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            line-height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .qcm-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .qcm-info {
+            margin-bottom: 20px;
+        }
+        
+        .qcm-info p {
+            color: #7f8c8d;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        
+        .qcm-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .qcm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .step h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            color: #7f8c8d;
+        }
+        
+        .github-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #24292e;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .github-link:hover {
+            background: #444d56;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        
+        .warning h4 {
+            margin-bottom: 10px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 QCM Atelier Figma TechSolutions</h1>
+            <p>Système d'évaluation interactif pour l'atelier UX/UI</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>🎯 Bienvenue dans vos QCM interactifs</h2>
+                <p>Complétez les 4 QCM au fur et à mesure de votre progression dans l'atelier. Chaque QCM génère automatiquement un JSON à intégrer dans votre fichier <code>submission.json</code> pour la validation GitHub Classroom.</p>
+            </div>
+            
+            <div class="warning">
+                <h4>⚠️ Important</h4>
+                <p>Ces QCM sont destinés aux étudiants ayant accepté l'assignment GitHub Classroom. Assurez-vous d'avoir cloné votre dépôt personnel avant de commencer.</p>
+            </div>
+            
+            <div class="qcm-grid">
+                <div class="qcm-card">
+                    <div class="phase-number">1</div>
+                    <h3>Phase 1 - Analyse UX</h3>
+                    <div class="qcm-info">
+                        <p><strong>📊 Questions:</strong> 4</p>
+                        <p><strong>⏱️ Timing:</strong> Après 30 min d'analyse</p>
+                        <p><strong>🎯 Objectif:</strong> Valider la compréhension des besoins utilisateurs</p>
+                    </div>
+                    <a href="qcm/qcm_phase1_analyse_ux.html" class="qcm-btn">🚀 Commencer le QCM</a>
+                </div>
+                
+                <div class="qcm-card">
+                    <div class="phase-number">2</div>
+                    <h3>Phase 2 - Conception</h3>
+                    <div class="qcm-info">
+                        <p><strong>📊 Questions:</strong> 6</p>
+                        <p><strong>⏱️ Timing:</strong> Après 90 min de conception</p>
+                        <p><strong>🎯 Objectif:</strong> Vérifier les compétences Figma et design</p>
+                    </div>
+                    <a href="qcm/qcm_phase2_conception.html" class="qcm-btn">🎨 Commencer le QCM</a>
+                </div>
+                
+                <div class="qcm-card">
+                    <div class="phase-number">3</div>
+                    <h3>Phase 3 - Présentation</h3>
+                    <div class="qcm-info">
+                        <p><strong>📊 Questions:</strong> 3</p>
+                        <p><strong>⏱️ Timing:</strong> Après présentation orale</p>
+                        <p><strong>🎯 Objectif:</strong> Valider la capacité de justification UX</p>
+                    </div>
+                    <a href="qcm/qcm_phase3_presentation.html" class="qcm-btn">🎤 Commencer le QCM</a>
+                </div>
+                
+                <div class="qcm-card">
+                    <div class="phase-number">4</div>
+                    <h3>Phase 4 - Synthèse</h3>
+                    <div class="qcm-info">
+                        <p><strong>📊 Questions:</strong> 4</p>
+                        <p><strong>⏱️ Timing:</strong> Fin de l'atelier</p>
+                        <p><strong>🎯 Objectif:</strong> Bilan complet des acquis</p>
+                    </div>
+                    <a href="qcm/qcm_final_synthese.html" class="qcm-btn">📊 Commencer le QCM</a>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Instructions d'utilisation</h3>
+                <div class="steps">
+                    <div class="step">
+                        <h4>1️⃣ Cliquer sur le QCM</h4>
+                        <p>Sélectionnez le QCM correspondant à votre phase actuelle dans l'atelier.</p>
+                    </div>
+                    <div class="step">
+                        <h4>2️⃣ Répondre aux questions</h4>
+                        <p>Répondez à toutes les questions. Le bouton "Valider" s'active automatiquement.</p>
+                    </div>
+                    <div class="step">
+                        <h4>3️⃣ Consulter les résultats</h4>
+                        <p>Obtenez votre score et les explications détaillées des bonnes réponses.</p>
+                    </div>
+                    <div class="step">
+                        <h4>4️⃣ Copier le JSON</h4>
+                        <p>Utilisez le bouton "Copier le JSON" et collez le contenu dans votre submission.json.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🎓 <strong>Atelier Figma TechSolutions</strong> - Système d'évaluation automatisé</p>
+            <p>Développé pour l'enseignement UX/UI avec GitHub Classroom</p>
+            <a href="https://github.com/BTS2-SIO-SLAM-LSW/atelier-figma-techsolutions" class="github-link">
+                📚 Voir le projet sur GitHub
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Animation d'entrée
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.qcm-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Tracking des clics pour analytics (optionnel)
+        document.querySelectorAll('.qcm-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const phase = this.textContent.trim();
+                console.log(`QCM ouvert: ${phase}`);
+                // Ici vous pourriez ajouter un tracking analytics si besoin
+            });
+        });
+    </script>
+</body>
+</html>
